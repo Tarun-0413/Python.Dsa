@@ -1,0 +1,75 @@
+class node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+        self.prev=None
+class doublylinkedlist:
+    def __init__(self):
+        self.head=None
+        self.tail=None
+    def insertBegin(self,data):
+        newnode=node(data)
+        if self.head is None:
+           self.head=newnode
+           self.tail=newnode
+        else:
+           newnode.next=self.head
+           self.head.prev=newnode
+           self.head=newnode
+    def insertEnd(self,data):
+        newnode=node(data)
+        if self.head is None:
+           self.head=newnode
+           self.tail=newnode
+        else:
+            newnode.prev=self.tail
+            self.tail.next=newnode
+            self.tail=newnode
+    def delBegin(self):
+        if self.head is None:
+            print("DLL is empty")
+        else:
+            temp=self.head
+            self.head=self.head.next
+            temp.next=None
+            self.head.prev=None
+            del temp
+    def delEnd(self):
+        if self.head is None:
+            print("DLL is empty")
+        else:
+            temp=self.tail
+            self.tail=self.tail.prev
+            temp.prev=None
+            self.tail.next=None
+            del temp
+    def search(self):
+        pass
+    def displayReverse(self):
+        pass
+    def display(self):
+        if self.head is None:
+            print("DLL is empty")
+        else:
+            temp=self.head
+            while temp:
+                print(temp.data,end=' ')
+                temp=temp.next
+                
+dll=doublylinkedlist()
+dll.display()
+dll.insertBegin(10)
+dll.insertBegin(20)
+dll.insertBegin(30)
+dll.insertBegin(40)
+print()
+dll.display()
+dll.insertEnd(200)
+print()
+dll.display()
+print()
+dll.delBegin()
+dll.display()
+print()
+dll.delEnd()
+dll.display()
